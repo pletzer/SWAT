@@ -185,9 +185,9 @@
       yieldn = Min(yieldn, 0.85 * plantn(j))
       yieldp = Min(yieldp, 0.85 * plantp(j))
       plantn(j) = plantn(j) - yieldn
-      plantn(j) = dmax1(0.0D+00,plantn(j))
+      plantn(j) = max(0.0D+00,plantn(j))
       plantp(j) = plantp(j) - yieldp
-      plantp(j) = dmax1(0.0D+00,plantp(j))
+      plantp(j) = max(0.0D+00,plantp(j))
 
 !! calculate modifier for autofertilization target nitrogen content
       tnyld(j) = 0.

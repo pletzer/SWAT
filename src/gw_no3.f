@@ -107,16 +107,16 @@
       revapn = xx * revapday
       gwseepn = xx * gwseep
 
-      revapn = dmax1(1.e-6,revapn)
-      gwseepn = dmax1(1.e-6,gwseepn)
+      revapn = max(1.e-6,revapn)
+      gwseepn = max(1.e-6,gwseepn)
 
 !! subtract nitrate losses from the shallow aquifer
       shallst_n(j) = shallst_n(j) - no3gw(j) - revapn - gwseepn
-      shallst_n(j) = dmax1 (0., shallst_n(j))
+      shallst_n(j) = max (0., shallst_n(j))
 
 !! compute nitrate losses in the groundwater
       shallst_n(j) = shallst_n(j) * gw_nloss(j)
-      shallst_n(j) = dmax1(0., shallst_n(j))
+      shallst_n(j) = max(0., shallst_n(j))
   
       return
       end

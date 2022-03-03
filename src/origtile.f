@@ -49,7 +49,7 @@
         if (qtile > 30.) then
           xyz = 0.
         end if
-        qtile = dmin1(qtile, drain_co_bsn)
+        qtile = min(qtile, drain_co_bsn)
       else
         qtile = 0.
       end if

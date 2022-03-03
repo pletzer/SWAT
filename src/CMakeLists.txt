@@ -1,111 +1,314 @@
-### Set primary name of the executable SWAT
-set(swatexe swat)
+set(SRCS
+    modparm.f
+    addh.f
+    albedo.f
+    allocate_parms.f
+    alph.f
+    anfert.f
+    apex_day.f
+    apply.f
+    ascrv.f
+    atri.f
+    aunif.f
+    autoirr.f
+    aveval.f
+    bacteria.f
+    biofilm.f
+    biozone.f
+    bmp_det_pond.f
+    bmpfixed.f
+    bmpinit.f
+    bmp_ri_pond.f
+    bmp_sand_filter.f
+    bmp_sed_pond.f
+    bmp_wet_pond.f
+    buffer.f
+    burnop.f
+    canopyint.f
+    caps.f
+    carbon_new.f
+    carbon_zhang2.f90
+    cfactor.f
+    chkcst.f
+    clgen.f
+    clicon.f
+    command.f
+    conapply.f
+    confert.f
+    crackflow.f
+    crackvol.f
+    curno.f
+    dailycn.f
+    decay.f
+    depstor.f
+    distrib_bmps.f
+    dormant.f
+    drains.f
+    dstn1.f
+    ee.f
+    eiusle.f
+    enrsb.f
+    erfc.f
+    estimate_ksat.f
+    etact.f
+    etpot.f
+    expo.f
+    fert.f
+    filter.f
+    filtw.f
+    finalbal.f
+    gcycl.f
+    getallo.f
+    grass_wway.f
+    graze.f
+    grow.f
+    gwmod_deep.f
+    gwmod.f
+    gw_no3.f
+    gwnutr.f
+    h2omgt_init.f
+    harvestop.f
+    harvgrainop.f
+    harvkillop.f
+    header.f
+    headout.f
+    hhnoqual.f
+    hhwatqual.f
+    hmeas.f
+    HQDAV.f90
+    hruaa.f
+    hruallo.f
+    hruday.f90
+    hrumon.f
+    hrupond.f
+    hrupondhr.f
+    hruyr.f
+    hydroinit.f
+    icl.f
+    impndaa.f
+    impndday.f
+    impnd_init.f
+    impndmon.f
+    impndyr.f
+    irrigate.f
+    irr_rch.f
+    irr_res.f
+    irrsub.f
+    jdt.f
+    killop.f
+    lakeq.f
+    latsed.f
+    layersplit.f
+    lid_cistern.f
+    lid_greenroof.f
+    lidinit.f
+    lid_porpavement.f
+    lid_raingarden.f
+    lids.f
+    log_normal.f
+    lwqdef.f
+    NCsed_leach.f90
+    ndenit.f
+    newtillmix.f
+    nfix.f
+    nitvol.f
+    nlch.f
+    nminrl.f
+    noqual.f
+    npup.f
+    nrain.f
+    nup.f
+    nuts.f
+    openwth.f
+    operatn.f
+    orgncswat.f
+    orgn.f
+    origtile.f
+    ovr_sed.f
+    percmacro.f
+    percmain.f
+    percmicro.f
+    pestlch.f
+    pestw.f
+    pesty.f
+    pgen.f
+    pgenhr.f
+    pkq.f
+    plantmod.f
+    plantop.f
+    pmeas.f
+    pminrl2.f
+    pminrl.f
+    pond.f
+    pondhr.f
+    pothole.f
+    potholehr.f
+    print_hyd.f
+    psed.f
+    qman.f
+    ran1.f
+    rchaa.f
+    rchday.f
+    rchinit.f
+    rchmon.f
+    rchuse.f
+    rchyr.f
+    reachout.f
+    readatmodep.f
+    readbsn.f
+    readchm.f
+    readcnst.f
+    readfcst.f
+    readfert.f
+    readfig.f
+    readfile.f
+    readgw.f
+    readhru.f
+    readinpt.f
+    readlup.f
+    readlwq.f
+    readmgt.f
+    readmon.f
+    readops.f
+    readpest.f
+    readplant.f
+    readpnd.f
+    readres.f
+    readrte.f
+    readru.f
+    readsdr.f
+    readsepticbz.f
+    readseptwq.f
+    readsno.f
+    readsol.f
+    readsub.f
+    readswq.f
+    readtill.f
+    readurban.f
+    readwgn.f
+    readwus.f
+    readwwq.f
+    readyr.f
+    reccnst.f
+    recday.f
+    rechour.f
+    recmon.f
+    recyear.f
+    regres.f
+    resbact.f
+    resetlu.f
+    res.f
+    reshr.f
+    resinit.f
+    resnut.f
+    rewind_init.f
+    rhgen.f
+    rootfr.f
+    route.f
+    routels.f
+    routeunit.f
+    routres.f
+    rsedaa.f
+    rseday.f
+    rsedmon.f
+    rsedyr.f
+    rtbact.f
+    rtday.f
+    rteinit.f
+    rthmusk.f
+    rthpest.f
+    rthsed.f
+    rthvsc.f90
+    rtmusk.f
+    rtout.f
+    rtpest.f
+    rtsed_bagnold.f
+    rtsed.f
+    rtsed_kodatie.f
+    rtsed_Molinas_Wu.f
+    rtsed_yangsand.f
+    sat_excess.f
+    saveconc.f
+    save.f
+    sched_mgt.f
+    schedule_ops.f
+    sim_initday.f
+    sim_inityr.f
+    simulate.f
+    slrgen.f
+    smeas.f
+    snom.f
+    soil_chem.f
+    soil_par.f
+    soil_phys.f
+    soil_write.f
+    solp.f
+    solt.f
+    std1.f
+    std2.f
+    std3.f
+    stdaa.f
+    storeinitial.f
+    structure.f
+    subaa.f
+    subbasin.f
+    subday.f
+    submon.f
+    substor.f
+    sub_subbasin.f
+    subwq.f
+    subyr.f
+    sumhyd.f
+    sumv.f
+    surface.f
+    surfst_h2o.f
+    surfstor.f
+    surq_daycn.f
+    surq_greenampt.f
+    swbl.f
+    sweep.f
+    sw_init.f
+    swu.f
+    tair.f
+    tgen.f
+    theta.f
+    tillfactor.f
+    tillmix.f
+    tmeas.f
+    tran.f
+    transfer.f
+    tstr.f
+    ttcoef.f
+    ttcoef_wway.f
+    urban.f
+    urbanhr.f
+    urb_bmp.f
+    varinit.f
+    vbl.f
+    virtual.f
+    volq.f
+    washp.f
+    watbal.f
+    water_hru.f
+    watqual2.f
+    watqual.f
+    wattable.f
+    watuse.f
+    weatgn.f
+    wetlan.f
+    wmeas.f
+    wndgen.f
+    writeaa.f
+    writea.f
+    writed.f
+    writem.f
+    xmon.f
+    ysed.f
+    zero0.f
+    zero1.f
+    zero2.f
+    zeroini.f
+    zero_urbn.f
+)   
 
-### Get source file lists of different formats
-file(GLOB F77SRCS *.f)
-file(GLOB F90SRCS *.f90)
-
-### Set Fortran line format for source file
-
-## Special sources that have fixed length of 72
-set(LEN72_SRCS "grow" "tran")
-foreach(F77FILE ${F77SRCS})
-    get_filename_component(CORENAME ${F77FILE} NAME_WE)
-    list(FIND LEN72_SRCS ${CORENAME} _FOUND_LEN72)
-    if(${CMAKE_Fortran_COMPILER} MATCHES "ifort.*")
-        # ifort, reference https://software.intel.com/en-us/node/678225
-        if(MSVC) # ifort integrated in Microsoft Visual Studio            
-            if(${_FOUND_LEN72} GREATER -1)
-                set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS /4L72)
-            else()
-                set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS /4L80)
-            endif()
-        else()
-            if(${_FOUND_LEN72} GREATER -1)
-                set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS -72)
-            else()
-                set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS -80)
-            endif()
-        endif()
-    else() # gfortran tested only
-        if(${_FOUND_LEN72} GREATER -1)
-            set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS -ffixed-line-length-72)
-        else()
-            set_source_files_properties(${F77FILE} PROPERTIES COMPILE_FLAGS -ffixed-line-length-80)
-        endif()
-    endif()
-endforeach()
-
-foreach(F90FILE ${F90SRCS})
-    if(${CMAKE_Fortran_COMPILER} MATCHES "ifort.*")
-        if(MSVC)
-            set_source_files_properties(${F90FILE} PROPERTIES COMPILE_FLAGS /4L132)
-        else()
-            set_source_files_properties(${F90FILE} PROPERTIES COMPILE_FLAGS -132)
-        endif()
-    else() # gfortran tested only
-        set_source_files_properties(${F90FILE} PROPERTIES COMPILE_FLAGS -ffree-line-length-none)
-    endif()
-endforeach()
-
-### Customize compile process according to versions of 'main.f' for gfortran
-file(READ ${CMAKE_SOURCE_DIR}/src/main.f First_Line_Of_Main_File OFFSET 0 LIMIT 26)
-## Situation 1: The first line of main.f is "include 'modparm.f'"
-if((NOT MSVC) AND (${First_Line_Of_Main_File} MATCHES "      include 'modparm.f'"))
-    if (${CMAKE_BUILD_TYPE} STREQUAL "RELEASE")
-        separate_arguments(Compile_Flags_List UNIX_COMMAND "${CMAKE_Fortran_FLAGS_RELEASE}")
-    else ()
-        separate_arguments(Compile_Flags_List UNIX_COMMAND "${CMAKE_Fortran_FLAGS_DEBUG}")
-    endif ()
-    # Build main.f first which includes modparm.f (i.e., parm.mod)
-    add_custom_command(OUTPUT main.o
-                       COMMAND ${CMAKE_Fortran_COMPILER} ${Compile_Flags_List} -ffixed-line-length-80 -c
-                               ${CMAKE_CURRENT_SOURCE_DIR}/modparm.f ${CMAKE_CURRENT_SOURCE_DIR}/main.f)
-    # Build other source files that depend on main.o
-    foreach(SRCFILE ${F77SRCS} ${F90SRCS})
-        get_filename_component(CORENAME ${SRCFILE} NAME_WE)
-        get_filename_component(ext ${SRCFILE} EXT)
-        # Excludes main.f and modparm.f
-        if(${CORENAME} STREQUAL "main" OR ${CORENAME} STREQUAL "modparm")
-            continue()
-        endif()
-        # Set compile flag according to Fortran line format. These should be consistent with settings above.
-        if(${ext} STREQUAL ".f")
-            set(Format_Flag "-ffixed-line-length-80")
-        else()
-            set(Format_Flag "-ffree-line-length-none")
-        endif()
-        list(FIND LEN72_SRCS ${CORENAME} _FOUND_LEN72)
-        if(${_FOUND_LEN72} GREATER -1)
-            set(Format_Flag "-ffixed-line-length-72")
-        endif()
-        add_custom_command(OUTPUT ${CORENAME}.o
-                           COMMAND ${CMAKE_Fortran_COMPILER} ${Compile_Flags_List} ${Format_Flag} -c
-                           ${SRCFILE} DEPENDS main.o)
-        list(APPEND swat_obj ${CORENAME}.o)
-    endforeach()
-    list(SORT swat_obj)
-    # Add executable built by objects
-    add_executable(${swatexe} ${swat_obj} main.o)
-## Situation 2: The first line of main.f is not "include 'modparm.f'", the command is same for ifort(MSVC) and gfortran
-else()
-    add_executable(${swatexe} ${F77SRCS} ${F90SRCS})
-endif()
-
-### Set exact name of SWAT executable according to versions and build type
-set_target_properties(${swatexe} PROPERTIES
-        LINKER_LANGUAGE Fortran
-        RELEASE_POSTFIX "${SWAT_VER_STR}.${TOOL_CHAIN}.rel${CMAKE_BUILD_BIT}"
-        DEBUG_POSTFIX "${SWAT_VER_STR}.${TOOL_CHAIN}.dbg${CMAKE_BUILD_BIT}"
-        PGO_POSTFIX "${SWAT_VER_STR}.${TOOL_CHAIN}.relpgo${CMAKE_BUILD_BIT}"
-        IPGO_POSTFIX "${SWAT_VER_STR}.${TOOL_CHAIN}.relpgo${CMAKE_BUILD_BIT}"
-        )
-
-### Set installation directory
-install(TARGETS ${swatexe} RUNTIME DESTINATION ${INSTALL_DIR})
-
-### For CLion to implement the "make install" command
-add_custom_target(install_${PROJECT_NAME}
-        $(MAKE) install
-        DEPENDS ${swatexe}
-        COMMENT "Installing ${PROJECT_NAME}")
+add_executable(swatexe modparm.f main.f ${SRCS})

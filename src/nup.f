@@ -163,8 +163,8 @@
           else
             xx = 1.
           end if
-          strsn(j) = dmax1(strsn(j), xx)
-          strsn(j) = dmin1(strsn(j), 1.)
+          strsn(j) = max(strsn(j), xx)
+          strsn(j) = min(strsn(j), 1.)
       end select
 
       return

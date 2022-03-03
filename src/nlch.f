@@ -156,8 +156,8 @@
 
 
       nloss = (2.18 * dis_stream(j) - 8.63) / 100.
-      nloss = dmax1(0.,nloss)
-      nloss = dmin1(1.,nloss)
+      nloss = max(0.,nloss)
+      nloss = min(1.,nloss)
       latno3(j) = (1. - nloss) * latno3(j)
 
       return

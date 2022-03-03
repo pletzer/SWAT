@@ -43,6 +43,8 @@ FUNCTION(SET_COMPILE_FLAG FLAGVAR FLAGVAL LANG)
             "[Uu]nknown option"                   # HP
             "[Ww]arning: [Oo]ption"               # SunPro
             "command option .* is not recognized" # XL
+            "is an invalid command-line option"   # Cray
+            "is an invalid argument"              # Cray
            )
     ENDIF(LANG STREQUAL "Fortran")
 
