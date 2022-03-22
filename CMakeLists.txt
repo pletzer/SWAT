@@ -46,6 +46,10 @@ message("Compiling SWAT version: ${SWAT_VER_STR}")
 project(${prjname} Fortran)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
+option(USE_MEMSET 
+       "Set to ON to set some variables with memset (faster if using Intel)"
+       OFF)
+
 ### Set cmake find path
 set(CMAKE_MODULE_PATH
         ${CMAKE_CURRENT_SOURCE_DIR}/cmake

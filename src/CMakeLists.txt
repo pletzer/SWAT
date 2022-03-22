@@ -2,8 +2,8 @@
 set(swatexe swat)
 
 ### Get source file lists of different formats
-file(GLOB F77SRCS *.f)
-file(GLOB F90SRCS *.f90)
+file(GLOB F77SRCS *.f *.F)
+file(GLOB F90SRCS *.f90 *.F90)
 
 ### Set Fortran line format for source file
 

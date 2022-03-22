@@ -109,6 +109,13 @@ SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG}"
                          "/check:bounds"  # Intel Windows
                 )
 
+if(USE_MEMSET)
+    SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG}"
+                     Fortran REQUIRED "-D_MEMSET"     # Unix
+                                      "/D_MEMSET"     # Windows
+                    )
+endif()
+
 #####################
 ### TESTING FLAGS ###
 #####################
@@ -125,10 +132,11 @@ SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_TESTING "${CMAKE_Fortran_FLAGS_TESTING}"
 
 # NOTE: agressive optimizations (-O3) are already turned on by default
 
+
 # Unroll loops
 SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"
-                 Fortran "-funroll-loops" # GNU
-                         "-unroll"        # Intel
+                 Fortran "-g -funroll-loops" # GNU
+                         "-unroll"     # Intel
                          "-Munroll"       # Portland Group
                          "-h unroll2"     # Cray
                          "/unroll"        # Intel Windows
@@ -151,6 +159,13 @@ SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"
                          "-h ipa2"  # Cray max is 5
                          "/Qipo"    # Intel Windows
                 )
+
+if(USE_MEMSET)
+    SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"
+                     Fortran REQUIRED "-D_MEMSET"     # Unix
+                                      "/D_MEMSET"     # Windows
+                    )
+endif()
 
 # Single-file optimizations
 # SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"

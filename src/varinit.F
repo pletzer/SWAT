@@ -193,6 +193,20 @@
 !!    ~ ~ ~ ~ ~ ~ END SPECIFICATIONS ~ ~ ~ ~ ~ ~
 
       use parm
+#ifdef _MEMSET
+      use, intrinsic :: iso_c_binding, only : c_ptr, c_int, c_size_t
+      type(c_ptr) :: cp
+      interface
+          function cmemset(ary, val, numbytes) bind(C, name='memset')
+              import :: c_ptr, c_int, c_size_t
+              implicit none
+              real(8), intent(inout)     :: ary ! first element of array
+              integer(c_int), value      :: val ! value to set
+              integer(c_size_t), value   :: numbytes ! number of bytes
+              type(c_ptr)                :: cmemset
+          end function cmemset
+      end interface
+#endif
 
       integer :: j, ly
 
@@ -325,7 +339,12 @@
 	  sedprev = 0.
 	  ubnrunoff = 0.
 	  irmmdt = 0.
+#ifdef _MEMSET
+        ! produces faster code with the Intel compiler 
+        cp = cmemset(hhsedy(1,1), 0, int(8*size(hhsedy), 8))
+#else
         hhsedy = 0.
+#endif
         ubntss = 0.
 
        return
