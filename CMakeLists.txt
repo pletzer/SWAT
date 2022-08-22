@@ -98,6 +98,11 @@ IF(NOT CMAKE_Fortran_COMPILER_SUPPORTS_F90)
     MESSAGE(FATAL_ERROR "Fortran compiler does not support F90")
 ENDIF(NOT CMAKE_Fortran_COMPILER_SUPPORTS_F90)
 
+if(USE_MEMSET)
+    set(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE} -D_MEMSET")
+    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -D_MEMSET")
+endif()
+
 ### Set the compile flags for DEBUG, RELEASE, and TESTING.
 INCLUDE(SetFortranFlags)
 

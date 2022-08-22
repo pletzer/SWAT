@@ -131,11 +131,15 @@ SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_TESTING "${CMAKE_Fortran_FLAGS_TESTING}"
 #####################
 
 # NOTE: agressive optimizations (-O3) are already turned on by default
+SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"
+                 Fortran "-xHost" # Intel
+                         "-march=native"     # GNU
+                )
 
 
 # Unroll loops
 SET_COMPILE_FLAG(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE}"
-                 Fortran "-g -funroll-loops" # GNU
+                 Fortran "-g -funroll-loops" # Intel
                          "-unroll"     # Intel
                          "-Munroll"       # Portland Group
                          "-h unroll2"     # Cray

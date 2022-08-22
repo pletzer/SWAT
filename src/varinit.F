@@ -203,7 +203,7 @@
               real(8), intent(inout)     :: ary ! first element of array
               integer(c_int), value      :: val ! value to set
               integer(c_size_t), value   :: numbytes ! number of bytes
-              type(c_ptr)                :: cmemset
+              type(c_ptr)                :: cmemset  ! void*
           end function cmemset
       end interface
 #endif
@@ -340,9 +340,11 @@
 	  ubnrunoff = 0.
 	  irmmdt = 0.
 #ifdef _MEMSET
+#warning message "Compiling with memset"
         ! produces faster code with the Intel compiler 
         cp = cmemset(hhsedy(1,1), 0, int(8*size(hhsedy), 8))
 #else
+#warning "Compiling WITHOUT memset"
         hhsedy = 0.
 #endif
         ubntss = 0.
